@@ -4,7 +4,7 @@
 <head>
     <!-- Basic Page Info -->
     <meta charset="utf-8">
-    <title>USER</title>
+    <title>SUPPLIER</title>
 
     <!-- Site favicon -->
     <!-- <link rel="shortcut icon" href="images/favicon.ico"> -->

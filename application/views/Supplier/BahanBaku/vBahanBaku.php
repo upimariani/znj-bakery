@@ -5,19 +5,19 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Informasi User</h4>
+                            <h4>Informasi Bahan Baku</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">User</li>
+                                <li class="breadcrumb-item active" aria-current="page">Bahan Baku</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-md-6 col-sm-12 text-right">
                         <div class="dropdown">
-                            <a href="<?= base_url('Admin/cUser/createUser') ?>" class="btn btn-primary">
-                                Tambah User
+                            <a href="<?= base_url('Supplier/cBahanBaku/createbahanbaku') ?>" class="btn btn-primary">
+                                Tambah Bahan Baku
                             </a>
 
                         </div>
@@ -42,38 +42,35 @@
                     <table class="data-table stripe hover nowrap">
                         <thead>
                             <tr>
-                                <th class="table-plus datatable-nosort">Nama User</th>
-                                <th>No Telepon</th>
-                                <th>Alamat</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                                <th>Level User</th>
+                                <th class="table-plus datatable-nosort">Nama Bahan Baku</th>
+                                <th>Keterangan Bahan Baku</th>
+                                <th>Harga Bahan Baku</th>
+                                <th>Stok Bahan Baku</th>
+                                <th>Stok Minimal Bahan Baku</th>
+                                <th>Stok Minimal Bahan Baku Gudang</th>
                                 <th class="datatable-nosort">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            foreach ($user as $key => $value) {
+                            foreach ($bahanbaku as $key => $value) {
                             ?>
                                 <tr>
-                                    <td class="table-plus"><?= $value->nama_user ?></td>
-                                    <td><?= $value->no_hp ?></td>
-                                    <td><?= $value->alamat_user ?></td>
-                                    <td><?= $value->username ?></td>
-                                    <td><?= $value->password ?></td>
-                                    <td><strong><?php if ($value->level_user == '1') {
-                                                    echo 'Admin';
-                                                } else {
-                                                    echo 'Pimpinan';
-                                                } ?></strong></td>
+                                    <td class="table-plus"><?= $value->nama_bb ?></td>
+                                    <td><?= $value->ket_bb ?></td>
+                                    <td>Rp. <?= number_format($value->harga_bb) ?></td>
+                                    <td><?= $value->stok_supp ?></td>
+                                    <td><?= $value->stok_min_supp ?></td>
+                                    <td><?= $value->stok_min_gudang ?></td>
+
                                     <td>
                                         <div class="dropdown">
                                             <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                                 <i class="fa fa-ellipsis-h"></i>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="<?= base_url('Admin/cUser/edit/' . $value->id_user) ?>"><i class="fa fa-pencil"></i> Edit</a>
-                                                <a class="dropdown-item" href="<?= base_url('Admin/cUser/delete/' . $value->id_user) ?>"><i class="fa fa-trash"></i> Delete</a>
+                                                <a class="dropdown-item" href="<?= base_url('Supplier/cBahanBaku/edit/' . $value->id_bb) ?>"><i class="fa fa-pencil"></i> Edit</a>
+                                                <a class="dropdown-item" href="<?= base_url('Supplier/cBahanBaku/delete/' . $value->id_bb) ?>"><i class="fa fa-trash"></i> Delete</a>
                                             </div>
                                         </div>
                                     </td>

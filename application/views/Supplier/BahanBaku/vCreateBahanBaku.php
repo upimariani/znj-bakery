@@ -5,12 +5,12 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Form Data User</h4>
+                            <h4>Form Data Bahan Baku</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Form Data User</li>
+                                <li class="breadcrumb-item active" aria-current="page">Form Data Bahan Baku</li>
                             </ol>
                         </nav>
                     </div>
@@ -21,23 +21,23 @@
             <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
                 <div class="clearfix">
                     <div class="pull-left">
-                        <h4 class="text-blue">Data User</h4>
-                        <p class="mb-30 font-14">Masukkan data user dengan baik dan benar</p>
+                        <h4 class="text-blue">Data Bahan Baku</h4>
+                        <p class="mb-30 font-14">Masukkan data bahan baku dengan baik dan benar</p>
                     </div>
 
                 </div>
-                <form action="<?= base_url('Admin/cUser/createUser') ?>" method="POST">
+                <form action="<?= base_url('Supplier/cBahanBaku/createbb') ?>" method="POST">
                     <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Nama User</label>
+                        <label class="col-sm-12 col-md-2 col-form-label">Nama Bahan Baku</label>
                         <div class="col-sm-12 col-md-10">
-                            <input class="form-control" name="nama" type="text" placeholder="Masukkan Nama User">
+                            <input class="form-control" name="nama" type="text" placeholder="Masukkan Nama Bahan Baku" required>
                             <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Alamat User</label>
+                        <label class="col-sm-12 col-md-2 col-form-label">Keterangan Bahan Baku</label>
                         <div class="col-sm-12 col-md-10">
-                            <input class="form-control" name="alamat" placeholder="Search Here" type="Alamat User">
+                            <input class="form-control" name="ket" placeholder="Masukkan Keterangan Bahan Baku" type="text" required>
                             <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
 
                         </div>
@@ -45,42 +45,38 @@
 
 
                     <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">No Telepon</label>
+                        <label class="col-sm-12 col-md-2 col-form-label">Harga</label>
                         <div class="col-sm-12 col-md-10">
-                            <input class="form-control" name="no_hp" type="No Telepon" placeholder="Masukkan No Telepon">
+                            <input class="form-control" name="harga" type="No Telepon" placeholder="Masukkan Harga Bahan Baku" required>
                             <?= form_error('no_hp', '<small class="text-danger pl-3">', '</small>'); ?>
 
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Username</label>
+                        <label class="col-sm-12 col-md-2 col-form-label">Stok</label>
                         <div class="col-sm-12 col-md-10">
-                            <input class="form-control" name="username" type="Username" placeholder="Masukkan Username">
+                            <input class="form-control" name="stok" type="text" placeholder="Masukkan Stok Bahan Baku" required>
                             <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
 
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Password</label>
+                        <label class="col-sm-12 col-md-2 col-form-label">Stok Minimal</label>
                         <div class="col-sm-12 col-md-10">
-                            <input class="form-control" name="password" type="Password" placeholder="Masukkan Password">
+                            <input class="form-control" name="stok_min" type="text" placeholder="Masukkan Stok Minimal Supplier" required>
+                            <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Stok Minimal Gudang</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input class="form-control" name="stok_min_gudang" type="text" placeholder="Masukkan Stok Minimal Gudang" required>
                             <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
 
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Level User</label>
-                        <div class="col-sm-12 col-md-10">
-                            <select name="level_user" class="custom-select col-12">
-                                <option value="" selected="">Choose...</option>
-                                <option value="1">Admin</option>
-                                <option value="2">Pimpinan</option>
-                            </select>
-                            <?= form_error('level_user', '<small class="text-danger pl-3">', '</small>'); ?>
-
-                        </div>
-                    </div>
                     <button type="submit" class="btn btn-success">Simpan</button>
 
                 </form>

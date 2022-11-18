@@ -14,35 +14,6 @@
 <script src="<?= base_url('asset/deskapp-master/') ?>src/plugins/datatables/media/js/button/pdfmake.min.js"></script>
 <script src="<?= base_url('asset/deskapp-master/') ?>src/plugins/datatables/media/js/button/vfs_fonts.js"></script>
 <script>
-    console.log = function() {}
-    $("#bahanbaku").on('change', function() {
-
-        $(".stok_supp").html($(this).find(':selected').attr('data-stok_supp'));
-        $(".stok_supp").val($(this).find(':selected').attr('data-stok_supp'));
-
-
-        $(".toko").html($(this).find(':selected').attr('data-toko'));
-        $(".toko").val($(this).find(':selected').attr('data-toko'));
-
-        $(".harga").html($(this).find(':selected').attr('data-harga'));
-        $(".harga").val($(this).find(':selected').attr('data-harga'));
-
-    });
-</script>
-<script>
-    console.log = function() {}
-    $("#bb").on('change', function() {
-
-        $(".sisa").html($(this).find(':selected').attr('data-sisa'));
-        $(".sisa").val($(this).find(':selected').attr('data-sisa'));
-
-
-        $(".tgl").html($(this).find(':selected').attr('data-tgl'));
-        $(".tgl").val($(this).find(':selected').attr('data-tgl'));
-
-    });
-</script>
-<script>
     $('document').ready(function() {
         $('.data-table').DataTable({
             scrollCollapse: true,

@@ -5,22 +5,17 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Informasi User</h4>
+                            <h4>Informasi Transaksi Bahan Baku</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">User</li>
+                                <li class="breadcrumb-item active" aria-current="page">Transaksi Bahan Baku</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-md-6 col-sm-12 text-right">
-                        <div class="dropdown">
-                            <a href="<?= base_url('Admin/cUser/createUser') ?>" class="btn btn-primary">
-                                Tambah User
-                            </a>
 
-                        </div>
                     </div>
                 </div>
                 <?php if ($this->session->userdata('success')) {
@@ -42,38 +37,46 @@
                     <table class="data-table stripe hover nowrap">
                         <thead>
                             <tr>
-                                <th class="table-plus datatable-nosort">Nama User</th>
-                                <th>No Telepon</th>
-                                <th>Alamat</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                                <th>Level User</th>
+                                <th class="table-plus datatable-nosort">Tanggal Order</th>
+                                <th>Atas Nama</th>
+                                <th>Total Bayar</th>
+                                <th>Status Pemesanan</th>
                                 <th class="datatable-nosort">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            foreach ($user as $key => $value) {
+                            foreach ($transaksi as $key => $value) {
                             ?>
                                 <tr>
-                                    <td class="table-plus"><?= $value->nama_user ?></td>
-                                    <td><?= $value->no_hp ?></td>
-                                    <td><?= $value->alamat_user ?></td>
-                                    <td><?= $value->username ?></td>
-                                    <td><?= $value->password ?></td>
-                                    <td><strong><?php if ($value->level_user == '1') {
-                                                    echo 'Admin';
-                                                } else {
-                                                    echo 'Pimpinan';
-                                                } ?></strong></td>
+                                    <td class="table-plus"><?= $value->tgl_order ?></td>
+                                    <td><?= $value->nama_user ?></td>
+                                    <td>Rp. <?= number_format($value->total_order) ?></td>
+                                    <td><?php if ($value->status_order == 0) { ?>
+                                            <span class="badge badge-danger">Belum Melakukan Pembayaran</span>
+                                        <?php } elseif ($value->status_order == 1) { ?>
+                                            <span class="badge badge-warning">Pembayaran Telah DIlakukan</span>
+                                        <?php } elseif ($value->status_order == 2) { ?>
+                                            <span class="badge badge-success">Pesanan Sudah DiVerifikasi</span>
+                                        <?php } ?>
+                                    </td>
+
                                     <td>
                                         <div class="dropdown">
                                             <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                                 <i class="fa fa-ellipsis-h"></i>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="<?= base_url('Admin/cUser/edit/' . $value->id_user) ?>"><i class="fa fa-pencil"></i> Edit</a>
-                                                <a class="dropdown-item" href="<?= base_url('Admin/cUser/delete/' . $value->id_user) ?>"><i class="fa fa-trash"></i> Delete</a>
+                                                <?php if ($value->status_order == 1) { ?>
+                                                    <a href=" <?= base_url('Supplier/cTransaksiBB/update/' . $value->id_transaksi) ?>" class="dropdown-item">Verifikasi</a>
+                                                <?php } elseif ($value->status_order == 0) { ?>
+                                                    <span class="badge badge-danger">Belum Melakukan Pembayaran</span>
+                                                <?php } elseif ($value->status_order == 2) { ?>
+                                                    <span class="badge badge-success">Pesanan Sudah DiVerifikasi</span>
+                                                <?php } ?>
+                                                <!-- <a class="dropdown-item" href="<?= base_url('Supplier/cTransaksiBB/update/' . $value->id_transaksi) ?>"><i class="fa fa-pencil"></i> Edit</a> -->
+                                                <!-- <a class="dropdown-item" href="<?= base_url('Supplier/cBahanBaku/delete/' . $value->id_bb) ?>"><i class="fa fa-trash"></i> Delete</a> -->
+                                                <!-- <input class="btn btn-outline-primary btn-lg btn-block" type="submit" value="Verifikasi"> -->
                                             </div>
                                         </div>
                                     </td>
@@ -81,8 +84,6 @@
                             <?php
                             }
                             ?>
-
-
                         </tbody>
                     </table>
                 </div>

@@ -30,19 +30,6 @@
     });
 </script>
 <script>
-    console.log = function() {}
-    $("#bb").on('change', function() {
-
-        $(".sisa").html($(this).find(':selected').attr('data-sisa'));
-        $(".sisa").val($(this).find(':selected').attr('data-sisa'));
-
-
-        $(".tgl").html($(this).find(':selected').attr('data-tgl'));
-        $(".tgl").val($(this).find(':selected').attr('data-tgl'));
-
-    });
-</script>
-<script>
     $('document').ready(function() {
         $('.data-table').DataTable({
             scrollCollapse: true,

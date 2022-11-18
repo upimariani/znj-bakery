@@ -5,12 +5,12 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Form Data User</h4>
+                            <h4>Form Update Data User</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Form Data User</li>
+                                <li class="breadcrumb-item active" aria-current="page">Form Update Data User</li>
                             </ol>
                         </nav>
                     </div>
@@ -26,18 +26,18 @@
                     </div>
 
                 </div>
-                <form action="<?= base_url('Admin/cUser/createUser') ?>" method="POST">
+                <form action="<?= base_url('Admin/cUser/edit/' . $user->id_user) ?>" method="POST">
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Nama User</label>
                         <div class="col-sm-12 col-md-10">
-                            <input class="form-control" name="nama" type="text" placeholder="Masukkan Nama User">
+                            <input class="form-control" value="<?= $user->nama_user ?>" name="nama" type="text" placeholder="Masukkan Nama User">
                             <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Alamat User</label>
                         <div class="col-sm-12 col-md-10">
-                            <input class="form-control" name="alamat" placeholder="Search Here" type="Alamat User">
+                            <input class="form-control" value="<?= $user->alamat_user ?>" name="alamat" placeholder="Search Here" type="Alamat User">
                             <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
 
                         </div>
@@ -47,7 +47,7 @@
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">No Telepon</label>
                         <div class="col-sm-12 col-md-10">
-                            <input class="form-control" name="no_hp" type="No Telepon" placeholder="Masukkan No Telepon">
+                            <input class="form-control" value="<?= $user->no_hp ?>" name="no_hp" type="No Telepon" placeholder="Masukkan No Telepon">
                             <?= form_error('no_hp', '<small class="text-danger pl-3">', '</small>'); ?>
 
                         </div>
@@ -55,7 +55,7 @@
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Username</label>
                         <div class="col-sm-12 col-md-10">
-                            <input class="form-control" name="username" type="Username" placeholder="Masukkan Username">
+                            <input class="form-control" value="<?= $user->username ?>" name="username" type="Username" placeholder="Masukkan Username">
                             <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
 
                         </div>
@@ -63,7 +63,7 @@
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Password</label>
                         <div class="col-sm-12 col-md-10">
-                            <input class="form-control" name="password" type="Password" placeholder="Masukkan Password">
+                            <input class="form-control" value="<?= $user->password ?>" name="password" type="Password" placeholder="Masukkan Password">
                             <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
 
                         </div>
@@ -74,14 +74,18 @@
                         <div class="col-sm-12 col-md-10">
                             <select name="level_user" class="custom-select col-12">
                                 <option value="" selected="">Choose...</option>
-                                <option value="1">Admin</option>
-                                <option value="2">Pimpinan</option>
+                                <option value="1" <?php if ($user->level_user == "1") {
+                                                        echo 'selected';
+                                                    } ?>>Admin</option>
+                                <option value="3" <?php if ($user->level_user == "2") {
+                                                        echo 'selected';
+                                                    } ?>>Pimpinan</option>
                             </select>
                             <?= form_error('level_user', '<small class="text-danger pl-3">', '</small>'); ?>
 
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success">Simpan</button>
+                    <button type="submit" class="btn btn-danger">Simpan</button>
 
                 </form>
 

@@ -5,19 +5,19 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Informasi User</h4>
+                            <h4>Informasi Supplier</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">User</li>
+                                <li class="breadcrumb-item active" aria-current="page">Supplier</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-md-6 col-sm-12 text-right">
                         <div class="dropdown">
-                            <a href="<?= base_url('Admin/cUser/createUser') ?>" class="btn btn-primary">
-                                Tambah User
+                            <a href="<?= base_url('Admin/cSupplier/createsupplier') ?>" class="btn btn-primary">
+                                Tambah Supplier
                             </a>
 
                         </div>
@@ -45,35 +45,32 @@
                                 <th class="table-plus datatable-nosort">Nama User</th>
                                 <th>No Telepon</th>
                                 <th>Alamat</th>
+                                <th>Nama Toko</th>
                                 <th>Username</th>
                                 <th>Password</th>
-                                <th>Level User</th>
                                 <th class="datatable-nosort">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            foreach ($user as $key => $value) {
+                            foreach ($supplier as $key => $value) {
                             ?>
                                 <tr>
-                                    <td class="table-plus"><?= $value->nama_user ?></td>
-                                    <td><?= $value->no_hp ?></td>
-                                    <td><?= $value->alamat_user ?></td>
-                                    <td><?= $value->username ?></td>
-                                    <td><?= $value->password ?></td>
-                                    <td><strong><?php if ($value->level_user == '1') {
-                                                    echo 'Admin';
-                                                } else {
-                                                    echo 'Pimpinan';
-                                                } ?></strong></td>
+                                    <td class="table-plus"><?= $value->nama_supplier ?></td>
+                                    <td><?= $value->no_hp_supplier ?></td>
+                                    <td><?= $value->alamat_supplier ?></td>
+                                    <td><?= $value->nama_toko ?></td>
+                                    <td><?= $value->username_supplier ?></td>
+                                    <td><?= $value->password_supplier ?></td>
                                     <td>
+
                                         <div class="dropdown">
                                             <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                                 <i class="fa fa-ellipsis-h"></i>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="<?= base_url('Admin/cUser/edit/' . $value->id_user) ?>"><i class="fa fa-pencil"></i> Edit</a>
-                                                <a class="dropdown-item" href="<?= base_url('Admin/cUser/delete/' . $value->id_user) ?>"><i class="fa fa-trash"></i> Delete</a>
+                                                <a class="dropdown-item" href="<?= base_url('Admin/cSupplier/edit/' . $value->id_supplier) ?>"><i class="fa fa-pencil"></i> Edit</a>
+                                                <a class="dropdown-item" href="<?= base_url('Admin/cSupplier/delete/' . $value->id_supplier) ?>"><i class="fa fa-trash"></i> Delete</a>
                                             </div>
                                         </div>
                                     </td>
