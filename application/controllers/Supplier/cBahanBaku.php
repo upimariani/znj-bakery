@@ -31,7 +31,7 @@ class cBahanBaku extends CI_Controller
     public function createbb()
     {
         $data = array(
-            'id_supplier' => '1',
+            'id_supplier' => $this->session->userdata('id_supplier'),
             'nama_bb' => $this->input->post('nama'),
             'ket_bb' => $this->input->post('ket'),
             'harga_bb' => $this->input->post('harga'),

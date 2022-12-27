@@ -5,27 +5,16 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Advanced Components</h4>
+                            <h4>Laporan Transaksi</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Advanced Components</li>
+                                <li class="breadcrumb-item active" aria-current="page">Laporan Transaksi</li>
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-md-6 col-sm-12 text-right">
-                        <div class="dropdown">
-                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                January 2018
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#">Export List</a>
-                                <a class="dropdown-item" href="#">Policies</a>
-                                <a class="dropdown-item" href="#">View Assets</a>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class="row">
@@ -34,7 +23,7 @@
                     <div class="pd-20 bg-white border-radius-4 box-shadow height-100-p">
                         <div class="clearfix mb-30">
                             <div class="pull-left">
-                                <h4 class="text-blue">Switchery js</h4>
+                                <h4 class="text-blue">Laporan Perhari</h4>
                             </div>
                         </div>
                         <?php
@@ -98,7 +87,7 @@
                     <div class="pd-20 bg-white border-radius-4 box-shadow height-100-p">
                         <div class="clearfix mb-30">
                             <div class="pull-left">
-                                <h4 class="text-blue">Bootstrap Tags Input</h4>
+                                <h4 class="text-blue">Laporan Perbulan</h4>
                             </div>
                         </div>
                         <?php
@@ -148,7 +137,7 @@
             <div class="pd-20 bg-white border-radius-4 box-shadow height-100-p mb-30">
                 <div class="clearfix mb-30">
                     <div class="pull-left">
-                        <h4 class="text-blue">Bootstrap TouchSpin</h4>
+                        <h4 class="text-blue">laporan Pertahun</h4>
                     </div>
                 </div>
                 <?php

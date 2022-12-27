@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Nov 2022 pada 16.32
+-- Waktu pembuatan: 18 Des 2022 pada 23.48
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -76,6 +76,7 @@ CREATE TABLE `bb_masuk` (
   `id_bb_masuk` int(11) NOT NULL,
   `id_transaksi` int(11) NOT NULL,
   `id_bb` int(11) NOT NULL,
+  `tgl_masuk` varchar(20) NOT NULL,
   `qty_masuk` int(11) NOT NULL,
   `sisa_stok` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -84,11 +85,12 @@ CREATE TABLE `bb_masuk` (
 -- Dumping data untuk tabel `bb_masuk`
 --
 
-INSERT INTO `bb_masuk` (`id_bb_masuk`, `id_transaksi`, `id_bb`, `qty_masuk`, `sisa_stok`) VALUES
-(1, 1, 2, 10, 8),
-(2, 2, 2, 12, 12),
-(3, 3, 2, 13, 13),
-(4, 5, 2, 25, 25);
+INSERT INTO `bb_masuk` (`id_bb_masuk`, `id_transaksi`, `id_bb`, `tgl_masuk`, `qty_masuk`, `sisa_stok`) VALUES
+(1, 1, 2, '', 10, 8),
+(2, 2, 2, '', 12, 12),
+(3, 3, 2, '', 13, 13),
+(4, 5, 2, '', 25, 25),
+(5, 7, 2, '2022-12-18', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -112,10 +114,12 @@ CREATE TABLE `invoice_bb` (
 
 INSERT INTO `invoice_bb` (`id_transaksi`, `id_user`, `id_supplier`, `tgl_order`, `total_order`, `status_order`, `bukti_pembayaran`) VALUES
 (1, 1, 1, '2022-11-09', '100000', 2, 'hill.jpg'),
-(2, 1, 1, '2022-11-10', '120000', 1, 'hill1.jpg'),
+(2, 1, 1, '2022-11-10', '120000', 2, 'hill1.jpg'),
 (3, 1, 1, '2022-11-10', '130000', 2, '31084499740-bukti_transfer.jpg'),
-(4, 1, 1, '2022-11-10', '250000', 0, ''),
-(5, 1, 1, '2022-11-10', '250000', 0, '');
+(4, 1, 1, '2022-11-10', '250000', 1, 'Screenshot_2022-06-27_121156.png'),
+(5, 1, 1, '2022-11-10', '250000', 0, ''),
+(6, 1, 1, '2022-12-18', '20000', 0, ''),
+(7, 1, 1, '2022-12-18', '20000', 0, '');
 
 -- --------------------------------------------------------
 
@@ -244,13 +248,13 @@ ALTER TABLE `bb_keluar`
 -- AUTO_INCREMENT untuk tabel `bb_masuk`
 --
 ALTER TABLE `bb_masuk`
-  MODIFY `id_bb_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_bb_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `invoice_bb`
 --
 ALTER TABLE `invoice_bb`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `retur_bb`

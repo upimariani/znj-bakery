@@ -58,7 +58,7 @@
                             ?>
                                 <ul>
                                     <li class="clearfix">
-                                        <div class="invoice-sub"><?= $value->id_transaksi ?></div>
+                                        <div class="invoice-sub"><?= $no++ ?></div>
                                         <div class="invoice-rate"><?= $value->nama_user ?></div>
                                         <div class="invoice-hours"><?= $value->tgl_order ?></div>
                                         <div class="invoice-subtotal"><span class="weight-600">Rp <?= number_format($value->total_order) ?></span></div>

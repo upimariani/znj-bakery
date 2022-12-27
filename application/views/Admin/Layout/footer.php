@@ -43,6 +43,16 @@
     });
 </script>
 <script>
+    console.log = function() {}
+    $("#retur").on('change', function() {
+
+        $(".stok").html($(this).find(':selected').attr('data-stok'));
+        $(".stok").val($(this).find(':selected').attr('data-stok'));
+
+
+    });
+</script>
+<script>
     $('document').ready(function() {
         $('.data-table').DataTable({
             scrollCollapse: true,

@@ -9,6 +9,8 @@ class mBBKeluar extends CI_Model
         $this->db->from('bb_masuk');
         $this->db->join('invoice_bb', 'bb_masuk.id_transaksi = invoice_bb.id_transaksi', 'left');
         $this->db->join('bahanbaku', 'bb_masuk.id_bb = bahanbaku.id_bb', 'left');
+        $this->db->where('status_order=2');
+
         return $this->db->get()->result();
     }
     public function insert_bb_keluar($data)

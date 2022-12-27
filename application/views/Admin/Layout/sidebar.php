@@ -74,7 +74,13 @@
                             <li><a href="<?= base_url('Admin/cBahanKeluar') ?>">Bahan Baku Keluar</a></li>
                         </ul>
                     </li>
-
+                    <li>
+                        <a href="<?= base_url('Admin/cReturn') ?>" class="dropdown-toggle no-arrow <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cReturn') {
+                                                                                                        echo 'active';
+                                                                                                    }  ?>">
+                            <span class="fa fa-book"></span><span class="mtext">Return Barang</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
