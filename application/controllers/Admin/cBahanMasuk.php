@@ -50,6 +50,16 @@ class cBahanMasuk extends CI_Controller
         // var_dump($data);
         $this->cart->insert($data);
         // redirect('Admin/cBahanMasuk/createtransaksi');
+
+        $konfirmasi = $this->input->post('konfirmasi');
+        if ($konfirmasi != ' ') {
+            $data_konfirmasi = array(
+                'konfirmasi' => $konfirmasi
+            );
+            $id_penawaran = $this->input->post('id_penawaran');
+            $this->db->where('id_penawaran', $id_penawaran);
+            $this->db->update('penawaran', $data_konfirmasi);
+        }
         $id = $this->input->post('supplier');
         $supplier = array(
             'supplier' => $this->input->post('supplier'),
@@ -96,6 +106,16 @@ class cBahanMasuk extends CI_Controller
             $this->mBahanMasuk->insert_detail($data_detail);
         }
 
+        //mengurangi bahan baku supplier
+        foreach ($this->cart->contents() as $key => $value) {
+            $data_stok = array(
+                'stok_supp' => $value['stok'] - $value['qty']
+            );
+            $this->db->where('id_bb', $value['id']);
+            $this->db->update('bahanbaku', $data_stok);
+        }
+
+        $this->cart->destroy();
         redirect('Admin/cBahanMasuk');
     }
     public function bayar($id)

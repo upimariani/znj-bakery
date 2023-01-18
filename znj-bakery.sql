@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Des 2022 pada 23.48
+-- Waktu pembuatan: 18 Jan 2023 pada 07.37
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -43,7 +43,7 @@ CREATE TABLE `bahanbaku` (
 --
 
 INSERT INTO `bahanbaku` (`id_bb`, `id_supplier`, `nama_bb`, `ket_bb`, `harga_bb`, `stok_supp`, `stok_min_supp`, `stok_min_gudang`) VALUES
-(2, 1, 'Gula', 'Kg', '10000', '21', '2', '2');
+(2, 1, 'Gula', 'Kg', '10000', '8', '2', '2');
 
 -- --------------------------------------------------------
 
@@ -86,11 +86,14 @@ CREATE TABLE `bb_masuk` (
 --
 
 INSERT INTO `bb_masuk` (`id_bb_masuk`, `id_transaksi`, `id_bb`, `tgl_masuk`, `qty_masuk`, `sisa_stok`) VALUES
-(1, 1, 2, '', 10, 8),
-(2, 2, 2, '', 12, 12),
-(3, 3, 2, '', 13, 13),
-(4, 5, 2, '', 25, 25),
-(5, 7, 2, '2022-12-18', 2, 2);
+(1, 1, 2, '', 10, 0),
+(2, 2, 2, '', 12, 0),
+(3, 3, 2, '', 13, 0),
+(4, 5, 2, '', 25, 0),
+(5, 7, 2, '2022-12-18', 2, 0),
+(6, 8, 2, '2023-01-18', 8, 0),
+(7, 9, 2, '2023-01-18', 8, 8),
+(8, 10, 2, '2023-01-18', 5, 5);
 
 -- --------------------------------------------------------
 
@@ -119,7 +122,32 @@ INSERT INTO `invoice_bb` (`id_transaksi`, `id_user`, `id_supplier`, `tgl_order`,
 (4, 1, 1, '2022-11-10', '250000', 1, 'Screenshot_2022-06-27_121156.png'),
 (5, 1, 1, '2022-11-10', '250000', 0, ''),
 (6, 1, 1, '2022-12-18', '20000', 0, ''),
-(7, 1, 1, '2022-12-18', '20000', 0, '');
+(7, 1, 1, '2022-12-18', '20000', 0, ''),
+(8, 1, 1, '2023-01-18', '80000', 0, ''),
+(9, 1, 1, '2023-01-18', '80000', 0, ''),
+(10, 1, 1, '2023-01-18', '50000', 0, '');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `penawaran`
+--
+
+CREATE TABLE `penawaran` (
+  `id_penawaran` int(11) NOT NULL,
+  `id_bb` int(11) NOT NULL,
+  `qty_penawaran` int(11) NOT NULL,
+  `konfirmasi` int(11) NOT NULL,
+  `time_penawaran` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `penawaran`
+--
+
+INSERT INTO `penawaran` (`id_penawaran`, `id_bb`, `qty_penawaran`, `konfirmasi`, `time_penawaran`) VALUES
+(1, 2, 20, 1, '2023-01-16 09:47:34'),
+(2, 2, 30, 0, '2023-01-16 09:47:34');
 
 -- --------------------------------------------------------
 
@@ -131,9 +159,17 @@ CREATE TABLE `retur_bb` (
   `id_retur` int(11) NOT NULL,
   `id_bb_masuk` int(11) NOT NULL,
   `tgl_retur` varchar(15) NOT NULL,
-  `alasan_retur` int(11) NOT NULL,
+  `alasan_retur` text NOT NULL,
   `qty_retur` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `retur_bb`
+--
+
+INSERT INTO `retur_bb` (`id_retur`, `id_bb_masuk`, `tgl_retur`, `alasan_retur`, `qty_retur`) VALUES
+(1, 6, '2023-01-18', '0', 8),
+(2, 5, '2023-01-18', 'Exp.', 2);
 
 -- --------------------------------------------------------
 
@@ -156,7 +192,8 @@ CREATE TABLE `supplier` (
 --
 
 INSERT INTO `supplier` (`id_supplier`, `nama_supplier`, `alamat_supplier`, `nama_toko`, `no_hp_supplier`, `username_supplier`, `password_supplier`) VALUES
-(1, 'Ahmad', 'Cijoho, Kuningan', 'Sinar Abadi', '089877876556', 'supplier', 'supplier');
+(1, 'Ahmad', 'Cijoho, Kuningan', 'Sinar Abadi', '089877876556', 'supplier', 'supplier'),
+(2, 'Jajang', 'Kuningan', 'Sinar Jaya', '08987656665', 'jajang', 'jajang');
 
 -- --------------------------------------------------------
 
@@ -211,6 +248,12 @@ ALTER TABLE `invoice_bb`
   ADD PRIMARY KEY (`id_transaksi`);
 
 --
+-- Indeks untuk tabel `penawaran`
+--
+ALTER TABLE `penawaran`
+  ADD PRIMARY KEY (`id_penawaran`);
+
+--
 -- Indeks untuk tabel `retur_bb`
 --
 ALTER TABLE `retur_bb`
@@ -248,25 +291,31 @@ ALTER TABLE `bb_keluar`
 -- AUTO_INCREMENT untuk tabel `bb_masuk`
 --
 ALTER TABLE `bb_masuk`
-  MODIFY `id_bb_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_bb_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `invoice_bb`
 --
 ALTER TABLE `invoice_bb`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT untuk tabel `penawaran`
+--
+ALTER TABLE `penawaran`
+  MODIFY `id_penawaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `retur_bb`
 --
 ALTER TABLE `retur_bb`
-  MODIFY `id_retur` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_retur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

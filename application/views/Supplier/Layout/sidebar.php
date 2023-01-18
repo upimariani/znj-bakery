@@ -57,6 +57,13 @@
                             <span class="fa fa-users"></span><span class="mtext">Transaksi Bahan Baku</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="<?= base_url('Supplier/cReturn') ?>" class="dropdown-toggle no-arrow <?php if ($this->uri->segment(1) == 'Supplier' && $this->uri->segment(2) == 'cReturn') {
+                                                                                                            echo 'active';
+                                                                                                        }  ?>">
+                            <span class="fa fa-book"></span><span class="mtext">Return Barang</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -33,6 +33,20 @@ class mBahanBaku extends CI_Model
         $this->db->where('id_bb', $id);
         $this->db->delete('bahanbaku');
     }
+
+    //return barang
+    public function return()
+    {
+        $this->db->select('*');
+        $this->db->from('retur_bb');
+        $this->db->join('bb_masuk', 'bb_masuk.id_bb_masuk = retur_bb.id_bb_masuk', 'left');
+        $this->db->join('bahanbaku', 'bahanbaku.id_bb = bb_masuk.id_bb', 'left');
+        $this->db->join('invoice_bb', 'invoice_bb.id_transaksi = bb_masuk.id_transaksi', 'left');
+        $this->db->join('supplier', 'supplier.id_supplier = bahanbaku.id_supplier', 'left');
+
+        $this->db->where('supplier.id_supplier', $this->session->userdata('id_supplier'));
+        return $this->db->get()->result();
+    }
 }
 
 /* End of file mBahanBaku.php */

@@ -88,7 +88,7 @@
                                 <?php
                                 foreach ($bahanbaku as $key => $value) {
                                 ?>
-                                    <option data-harga="<?= $value->harga_bb ?>" data-stok_supp="<?= $value->stok_supp ?>" data-toko="<?= $value->nama_bb ?>" value="<?= $value->id_bb ?>"><?= $value->nama_bb ?></option>
+                                    <option data-harga="<?= $value->harga_bb ?>" data-stok_supp="<?= $value->stok_supp ?>" data-toko="<?= $value->ket_bb ?>" value="<?= $value->id_bb ?>"><?= $value->nama_bb ?></option>
                                 <?php
                                 }
                                 ?>
@@ -97,7 +97,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Nama Toko</label>
+                        <label class="col-sm-12 col-md-2 col-form-label">Keterangan Bahan Baku</label>
                         <div class="col-sm-12 col-md-10">
                             <input class="toko form-control" name="nama" placeholder="Nama Bahan Baku" type="text" readonly>
                             <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>

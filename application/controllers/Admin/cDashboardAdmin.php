@@ -23,6 +23,13 @@ class cDashboardAdmin extends CI_Controller
         $this->load->view('Admin/vDashboardAdmin', $data);
         $this->load->view('Admin/Layout/footer');
     }
+    public function tolak($id_penawaran)
+    {
+        $this->db->where('id_penawaran', $id_penawaran);
+        $this->db->delete('penawaran');
+        $this->session->set_flashdata('success', 'Penawaran Ditolak!!!');
+        redirect('Admin/cDashboardAdmin');
+    }
 }
 
 /* End of file cDashboardAdmin.php */
