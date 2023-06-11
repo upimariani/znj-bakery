@@ -16,6 +16,7 @@ class cDashboardAdmin extends CI_Controller
         $this->protect->proteksi_halaman();
         $data = array(
             'stok_bb' => $this->mDashboard->stok_bb(),
+            'info_bb' => $this->mDashboard->info_bb(),
             'transaksi_belum_bayar' => $this->mDashboard->transaksi_belum_bayar()
         );
         $this->load->view('Admin/Layout/head');

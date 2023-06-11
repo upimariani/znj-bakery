@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Jan 2023 pada 07.37
+-- Waktu pembuatan: 02 Apr 2023 pada 00.17
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -43,7 +43,7 @@ CREATE TABLE `bahanbaku` (
 --
 
 INSERT INTO `bahanbaku` (`id_bb`, `id_supplier`, `nama_bb`, `ket_bb`, `harga_bb`, `stok_supp`, `stok_min_supp`, `stok_min_gudang`) VALUES
-(2, 1, 'Gula', 'Kg', '10000', '8', '2', '2');
+(2, 1, 'Gula', 'Kg', '10000', '4', '2', '2');
 
 -- --------------------------------------------------------
 
@@ -93,7 +93,9 @@ INSERT INTO `bb_masuk` (`id_bb_masuk`, `id_transaksi`, `id_bb`, `tgl_masuk`, `qt
 (5, 7, 2, '2022-12-18', 2, 0),
 (6, 8, 2, '2023-01-18', 8, 0),
 (7, 9, 2, '2023-01-18', 8, 8),
-(8, 10, 2, '2023-01-18', 5, 5);
+(8, 10, 2, '2023-01-18', 5, 5),
+(9, 11, 2, '2023-01-23', 2, 2),
+(10, 12, 2, '2023-01-23', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -120,12 +122,14 @@ INSERT INTO `invoice_bb` (`id_transaksi`, `id_user`, `id_supplier`, `tgl_order`,
 (2, 1, 1, '2022-11-10', '120000', 2, 'hill1.jpg'),
 (3, 1, 1, '2022-11-10', '130000', 2, '31084499740-bukti_transfer.jpg'),
 (4, 1, 1, '2022-11-10', '250000', 1, 'Screenshot_2022-06-27_121156.png'),
-(5, 1, 1, '2022-11-10', '250000', 0, ''),
-(6, 1, 1, '2022-12-18', '20000', 0, ''),
-(7, 1, 1, '2022-12-18', '20000', 0, ''),
-(8, 1, 1, '2023-01-18', '80000', 0, ''),
-(9, 1, 1, '2023-01-18', '80000', 0, ''),
-(10, 1, 1, '2023-01-18', '50000', 0, '');
+(5, 1, 1, '2022-11-10', '250000', 2, 'Screenshot_2022-06-27_121156.png'),
+(6, 1, 1, '2022-12-18', '20000', 2, 'Screenshot_2022-06-27_121156.png'),
+(7, 1, 1, '2022-12-18', '20000', 2, 'Screenshot_2022-06-27_121156.png'),
+(8, 1, 1, '2023-01-18', '80000', 2, 'Screenshot_2022-06-27_121156.png'),
+(9, 1, 1, '2023-01-18', '80000', 2, 'Screenshot_2022-06-27_121156.png'),
+(10, 1, 1, '2023-01-18', '50000', 2, 'Screenshot_2022-06-27_121156.png'),
+(11, 1, 1, '2023-01-23', '20000', 0, ''),
+(12, 1, 1, '2023-01-23', '20000', 0, '');
 
 -- --------------------------------------------------------
 
@@ -291,13 +295,13 @@ ALTER TABLE `bb_keluar`
 -- AUTO_INCREMENT untuk tabel `bb_masuk`
 --
 ALTER TABLE `bb_masuk`
-  MODIFY `id_bb_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_bb_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `invoice_bb`
 --
 ALTER TABLE `invoice_bb`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `penawaran`

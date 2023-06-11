@@ -24,8 +24,14 @@
         $(".toko").html($(this).find(':selected').attr('data-toko'));
         $(".toko").val($(this).find(':selected').attr('data-toko'));
 
+        $(".nama").html($(this).find(':selected').attr('data-nama'));
+        $(".nama").val($(this).find(':selected').attr('data-nama'));
+
         $(".harga").html($(this).find(':selected').attr('data-harga'));
         $(".harga").val($(this).find(':selected').attr('data-harga'));
+
+        $(".supplier").html($(this).find(':selected').attr('data-supplier'));
+        $(".supplier").val($(this).find(':selected').attr('data-supplier'));
 
     });
 </script>

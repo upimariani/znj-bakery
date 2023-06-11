@@ -3,12 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class mBahanMasuk extends CI_Model
 {
-    public function bahanbaku($id)
+    public function bahanbaku()
     {
         $this->db->select('*');
         $this->db->from('bahanbaku');
         $this->db->join('supplier', 'bahanbaku.id_supplier = supplier.id_supplier', 'left');
-        $this->db->where('bahanbaku.id_supplier', $id);
+        // $this->db->where('bahanbaku.id_supplier', $id);
         return $this->db->get()->result();
     }
     public function insert_invoice($data)
@@ -53,6 +53,16 @@ class mBahanMasuk extends CI_Model
     {
         $this->db->where('id_transaksi', $id);
         $this->db->update('invoice_bb', $data);
+    }
+    public function stok_bahan_baku()
+    {
+        $this->db->select('SUM(sisa_stok) as total, bb_masuk.id_bb, nama_bb, ket_bb');
+        $this->db->from('bb_masuk');
+        $this->db->join('bahanbaku', 'bb_masuk.id_bb = bahanbaku.id_bb', 'left');
+        $this->db->join('invoice_bb', 'bb_masuk.id_transaksi = invoice_bb.id_transaksi', 'left');
+        $this->db->where('status_order=', 2);
+        $this->db->group_by('bb_masuk.id_bb');
+        return $this->db->get()->result();
     }
 }
 

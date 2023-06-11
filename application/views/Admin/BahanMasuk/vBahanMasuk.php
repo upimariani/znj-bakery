@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-md-6 col-sm-12 text-right">
                         <div class="dropdown">
-                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#small-modal" type="button">
+                            <a href="<?= base_url('Admin/cBahanMasuk/createtransaksi') ?>" class="btn btn-primary">
                                 Transaksi Bahan Baku
                             </a>
                         </div>

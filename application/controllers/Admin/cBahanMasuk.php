@@ -26,11 +26,11 @@ class cBahanMasuk extends CI_Controller
     }
     public function createtransaksi()
     {
-        $supplier = $this->input->post('supplier');
+        // $supplier = $this->input->post('supplier');
 
         $data = array(
-            'supplier' => $this->input->post('supplier'),
-            'bahanbaku' => $this->mBahanMasuk->bahanbaku($supplier)
+            // 'supplier' => $this->input->post('supplier'),
+            'bahanbaku' => $this->mBahanMasuk->bahanbaku()
         );
         $this->load->view('Admin/Layout/head');
         $this->load->view('Admin/Layout/sidebar');
@@ -46,6 +46,7 @@ class cBahanMasuk extends CI_Controller
             'qty' => $this->input->post('qty'),
             'price' => $this->input->post('harga'),
             'stok' => $this->input->post('stok'),
+            'supplier' => $this->input->post('supplier')
         );
         // var_dump($data);
         $this->cart->insert($data);
@@ -60,27 +61,20 @@ class cBahanMasuk extends CI_Controller
             $this->db->where('id_penawaran', $id_penawaran);
             $this->db->update('penawaran', $data_konfirmasi);
         }
-        $id = $this->input->post('supplier');
+        // $id = $this->input->post('supplier');
         $supplier = array(
-            'supplier' => $this->input->post('supplier'),
-            'bahanbaku' => $this->mBahanMasuk->bahanbaku($id)
+            // 'supplier' => $this->input->post('supplier'),
+            'bahanbaku' => $this->mBahanMasuk->bahanbaku()
         );
         $this->load->view('Admin/Layout/head');
         $this->load->view('Admin/Layout/sidebar');
         $this->load->view('Admin/BahanMasuk/vCreateTransaksi', $supplier);
         $this->load->view('Admin/Layout/footer');
     }
-    public function delete($id, $id_supplier)
+    public function delete($id)
     {
         $this->cart->remove($id);
-        $supplier = array(
-            'supplier' => $id_supplier,
-            'bahanbaku' => $this->mBahanMasuk->bahanbaku($id_supplier)
-        );
-        $this->load->view('Admin/Layout/head');
-        $this->load->view('Admin/Layout/sidebar');
-        $this->load->view('Admin/BahanMasuk/vCreateTransaksi', $supplier);
-        $this->load->view('Admin/Layout/footer');
+        redirect('Admin/cBahanMasuk/createtransaksi');
     }
     public function selesai_cart($id_supplier)
     {

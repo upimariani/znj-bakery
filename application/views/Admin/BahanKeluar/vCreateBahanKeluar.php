@@ -34,9 +34,11 @@
                                 <option>--Pilih Bahan Baku Keluar---</option>
                                 <?php
                                 foreach ($bb as $key => $value) {
+                                    if ($value->sisa_stok != 0) {
                                 ?>
-                                    <option data-sisa="<?= $value->sisa_stok ?>" data-tgl="<?= $value->tgl_order ?>" value="<?= $value->id_bb_masuk ?>">Tgl.masuk <?= $value->tgl_order ?> | <?= $value->nama_bb ?></option>
+                                        <option data-sisa="<?= $value->sisa_stok ?>" data-tgl="<?= $value->tgl_order ?>" value="<?= $value->id_bb_masuk ?>">Tgl.masuk <?= $value->tgl_order ?> | <?= $value->nama_bb ?></option>
                                 <?php
+                                    }
                                 }
                                 ?>
                             </select>

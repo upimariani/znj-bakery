@@ -20,25 +20,15 @@
                     <div class="notification-list mx-h-450 customscroll">
                         <ul>
                             <?php
-                            foreach ($stok_bb as $key => $value) {
+                            foreach ($info_bb as $key => $value) {
                                 if ($value->sisa_stok != 0) {
                             ?>
 
                                     <li>
                                         <a href="#">
                                             <img src="vendors/images/img.jpg" alt="">
-                                            <h3 class="clearfix"><?= $value->nama_bb ?> | Tgl.Masuk <strong><?= $value->tgl_order ?></strong><span>Stok : <?= $value->sisa_stok ?> <?= $value->ket_bb ?></span></h3>
-                                            <?php
-                                            if ($value->sisa_stok <= $value->stok_min_gudang) {
-                                            ?>
-                                                <p class="text-danger">Stok Sudah melewati batas minimal stok!!! Segera Melakukan Transaksi</p>
-                                            <?php
-                                            } else {
-                                            ?>
-                                                <p class="text-success">Stok Masih Aman</p>
-                                            <?php
-                                            }
-                                            ?>
+                                            <h3 class="clearfix"><?= $value->nama_bb ?> | Tgl.Masuk <strong><?= $value->tgl_order ?></strong><span>Stok : <?= $value->qty_masuk ?> <?= $value->ket_bb ?></span></h3>
+
 
                                         </a>
                                     </li>
@@ -54,7 +44,7 @@
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-30">
                 <div class="bg-white pd-20 box-shadow border-radius-5 height-100-p">
-                    <h4 class="mb-30">Transaksi</h4>
+                    <h4 class="mb-30">Transaksi Yang Belum Melakukan Pembayaran</h4>
                     <div class="to-do-list mx-h-450 customscroll">
                         <ul>
                             <?php
@@ -79,7 +69,7 @@
         </div>
         <div class="row clearfix">
 
-            <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-30">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-30">
                 <div class="bg-white pd-20 box-shadow border-radius-5 height-100-p">
                     <h4 class="mb-20">Informasi Penawaran Bahan Baku Supplier</h4>
                     <div class="notification-list mx-h-450 customscroll">
@@ -113,6 +103,44 @@
                             <?php
                             }
                             ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-30">
+                <div class="bg-white pd-20 box-shadow border-radius-5 height-100-p">
+                    <h4 class="mb-20">Informasi Status Stok Bahan Baku Gudang</h4>
+                    <div class="notification-list mx-h-450 customscroll">
+                        <ul>
+                            <?php
+                            foreach ($stok_bb as $key => $value) {
+                                if ($value->total != 0) {
+                            ?>
+
+                                    <li>
+                                        <a href="#">
+                                            <img src="vendors/images/img.jpg" alt="">
+                                            <h3 class="clearfix"><?= $value->nama_bb ?> <span>Stok : <?= $value->total ?> <?= $value->ket_bb ?></span></h3>
+                                            <?php
+                                            if ($value->total <= $value->stok_min_gudang) {
+                                            ?>
+                                                <p class="text-danger">Stok Sudah melewati batas minimal stok!!! Segera Melakukan Transaksi</p>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <p class="text-success">Stok Masih Aman</p>
+                                            <?php
+                                            }
+                                            ?>
+
+                                        </a>
+                                    </li>
+                            <?php
+                                }
+                            }
+                            ?>
+
+
                         </ul>
                     </div>
                 </div>

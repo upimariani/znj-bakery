@@ -81,7 +81,15 @@
                             <span class="fa fa-book"></span><span class="mtext">Return Barang</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="<?= base_url('Admin/cStokBahanBaku') ?>" class="dropdown-toggle no-arrow <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cStokBahanBaku') {
+                                                                                                                echo 'active';
+                                                                                                            }  ?>">
+                            <span class="fa fa-info"></span><span class="mtext">Stok Bahan Baku</span>
+                        </a>
+                    </li>
                 </ul>
+
             </div>
         </div>
     </div>

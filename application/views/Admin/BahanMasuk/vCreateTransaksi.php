@@ -45,6 +45,7 @@
                                 <?php
                                 $no = 1;
                                 foreach ($this->cart->contents() as $key => $value) {
+                                    $supplier = $value['supplier'];
                                 ?>
                                     <tr>
                                         <th scope="row"><?= $no++ ?></th>
@@ -53,7 +54,7 @@
                                         <td><?= $value['qty'] ?></td>
                                         <td><span class="badge badge-primary">Rp. <?= number_format($value['price'] * $value['qty'])  ?></span></td>
 
-                                        <td><a href="<?= base_url('Admin/cBahanMasuk/delete/' . $value['rowid'] . '/' . $supplier) ?>">Hapus</a></td>
+                                        <td><a href="<?= base_url('Admin/cBahanMasuk/delete/' . $value['rowid']) ?>">Hapus</a></td>
                                     </tr>
                                 <?php
                                 }
@@ -79,7 +80,7 @@
                     </div>
                 </div>
                 <form action="<?= base_url('Admin/cBahanMasuk/addtocart') ?>" method="POST">
-                    <input type="hidden" name="supplier" value="<?= $supplier ?>">
+                    <input type="hidden" class="supplier" name="supplier">
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Nama Produk</label>
                         <div class="col-sm-12 col-md-10">
@@ -88,7 +89,7 @@
                                 <?php
                                 foreach ($bahanbaku as $key => $value) {
                                 ?>
-                                    <option data-harga="<?= $value->harga_bb ?>" data-stok_supp="<?= $value->stok_supp ?>" data-toko="<?= $value->ket_bb ?>" value="<?= $value->id_bb ?>"><?= $value->nama_bb ?></option>
+                                    <option data-supplier="<?= $value->id_supplier ?>" data-harga="<?= $value->harga_bb ?>" data-stok_supp="<?= $value->stok_supp ?>" data-nama="<?= $value->nama_bb ?>" data-toko="<?= $value->ket_bb ?>" value="<?= $value->id_bb ?>"><?= $value->nama_bb ?> | Supplier : <?= $value->nama_supplier ?></option>
                                 <?php
                                 }
                                 ?>
@@ -97,9 +98,16 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Nama Bahan Baku</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input class="nama form-control" name="nama" placeholder="Nama Bahan Baku" type="text" readonly>
+                            <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Keterangan Bahan Baku</label>
                         <div class="col-sm-12 col-md-10">
-                            <input class="toko form-control" name="nama" placeholder="Nama Bahan Baku" type="text" readonly>
+                            <input class="toko form-control" placeholder="Nama Bahan Baku" type="text" readonly>
                             <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
